@@ -77,10 +77,10 @@ class MobileNetSSD:
         else:
             print(f"{self.query} detected {detected} !")
         cv2_imshow(image)
-        b,g,r = cv2.split(image)
-        image_rgb = cv2.merge((r,g,b))
-        plt.imshow(image_rgb)
-        plt.show()
+#         b,g,r = cv2.split(image)
+#         image_rgb = cv2.merge((r,g,b))
+#         plt.imshow(image_rgb)
+#         plt.show()
         cv2.imwrite('/content/Object-Detection/Image.jpg', image)
 #         cv2.waitKey(0)
         if self.verbose:
