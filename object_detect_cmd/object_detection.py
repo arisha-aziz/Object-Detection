@@ -81,6 +81,9 @@ class MobileNetSSD:
         image_rgb = cv2.merge((r,g,b))
         plt.imshow(image_rgb)
         plt.show()
+        img = cv2.imread(image, 1)
+        path = '/content/Object-Detection/img/output'
+        cv2.imwrite(os.path.join(path , 'im_out.jpg'), img)
 #         cv2.waitKey(0)
         if self.verbose:
             print(f"All objects detected in the image : {detected_items}")
