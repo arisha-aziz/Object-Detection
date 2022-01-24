@@ -2,6 +2,7 @@
 import numpy as np
 import argparse
 import cv2
+from google.colab.patches import cv2_imshow
 import os
 
 # main class for object detection script
@@ -73,8 +74,8 @@ class MobileNetSSD:
             print(f"NO {self.query} detected in the given image !")
         else:
             print(f"{self.query} detected {detected} !")
-        cv2.imshow("Output", image)
-        cv2.waitKey(0)
+        cv2_imshow(image)
+#         cv2.waitKey(0)
         if self.verbose:
             print(f"All objects detected in the image : {detected_items}")
 
