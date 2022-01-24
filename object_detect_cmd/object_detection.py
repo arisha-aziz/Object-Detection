@@ -76,6 +76,8 @@ class MobileNetSSD:
         else:
             print(f"{self.query} detected {detected} !")
         cv2_imshow(image)
+        with Image.open(image) as im:
+            im.show()
 #         cv2.waitKey(0)
         if self.verbose:
             print(f"All objects detected in the image : {detected_items}")
