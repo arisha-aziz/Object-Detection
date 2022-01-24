@@ -3,6 +3,7 @@ import numpy as np
 import argparse
 import cv2
 from google.colab.patches import cv2_imshow
+from PIL import Image
 import os
 
 # main class for object detection script
