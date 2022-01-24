@@ -68,9 +68,9 @@ class MobileNetSSD:
                     label = f"{CLASSES[idx]} : {confidence*100}"
                     # increment every time it is detected
                     detected += 1
-                    cv2.rectangle(image, (startX, startY), (endX, endY), COLORS[idx], 2)
+                    cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
-                    cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+                    cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
         if not detected:
             print(f"NO {self.query} detected in the given image !")
