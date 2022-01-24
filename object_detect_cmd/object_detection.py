@@ -4,6 +4,7 @@ import argparse
 import cv2
 from google.colab.patches import cv2_imshow
 from PIL import Image
+import matplotlib.pyplot as plt
 import os
 
 # main class for object detection script
@@ -75,7 +76,11 @@ class MobileNetSSD:
             print(f"NO {self.query} detected in the given image !")
         else:
             print(f"{self.query} detected {detected} !")
-        display(cv2_imshow(image))
+        cv2_imshow(image)
+        b,g,r = cv2.split(frame)
+        frame_rgb = cv2.merge((r,g,b))
+        plt.imshow(frame_rgb)
+        plt.show()
 #         cv2.waitKey(0)
         if self.verbose:
             print(f"All objects detected in the image : {detected_items}")
