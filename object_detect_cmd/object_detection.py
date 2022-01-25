@@ -65,7 +65,7 @@ class MobileNetSSD:
                     box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
                     # setting the four core coordinates to draw the rectangle
                     (startX, startY, endX, endY) = box.astype("int")
-                    label = f"{CLASSES[idx]} : {'%.2f' % round(confidence, 2)}"
+                    label = f"{CLASSES[idx]} : {'%.3f' % round(confidence, 3)}"
                     # increment every time it is detected
                     detected += 1
                     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)
