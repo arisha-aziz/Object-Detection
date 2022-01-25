@@ -16,6 +16,7 @@ class MobileNetSSD:
         verbose : True , if we want to see overall classes predicted
         '''
         self.image = args.image # image path
+        self.depth_estimated_image = args.depth_estimated_image # depth estimated image path
         self.prototxt = args.prototxt # file containing info about caffe model
         self.model = args.model # weights of caffe model
         self.confidence = args.confidence # confidence (threshold) value for prediction
@@ -40,6 +41,7 @@ class MobileNetSSD:
         # read image
 
         image = cv2.imread(self.image)
+        depth_estimated_image = cv2.imread(self.depth_estimated_image)
         # finding height, weight
         h, w = image.shape[0], image.shape[1]
         # perform preprocessing like mean subtraction and scaling
@@ -69,19 +71,23 @@ class MobileNetSSD:
                     # increment every time it is detected
                     detected += 1
                     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)
+                    cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
                     cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.putText(depth_estimated_image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
         if not detected:
             print(f"NO {self.query} detected in the given image !")
         else:
             print(f"{self.query} detected {detected} !")
         cv2_imshow(image)
+        cv2_imshow(depth_estimated_image)
 #         b,g,r = cv2.split(image)
 #         image_rgb = cv2.merge((r,g,b))
 #         plt.imshow(image_rgb)
 #         plt.show()
-        cv2.imwrite('/content/Object-Detection/Image.jpg', image)
+        cv2.imwrite('/content/Object-Detection/bounding_box_image.jpg', image)
+        cv2.imwrite('/content/Object-Detection/depth_bounding_box_image.jpg', depth_estimated_image)
 #         cv2.waitKey(0)
         if self.verbose:
             print(f"All objects detected in the image : {detected_items}")
@@ -92,6 +98,7 @@ if __name__ == '__main__':
     print("WELCOME TO Object DETECTION")
     parser = argparse.ArgumentParser(description='Automating RoI extraction', epilog='Happy detection :)')
     parser.add_argument('image', type=str, help='Image path')
+    parser.add_argument('depth_estimated_image', type=str, help='Depth estimated image path')
     parser.add_argument('prototxt', type=str, help='info about model')
     parser.add_argument('model', type=str, help='model file of caffemodel type')
     parser.add_argument('confidence', type=str, help='threshold confidence %')
