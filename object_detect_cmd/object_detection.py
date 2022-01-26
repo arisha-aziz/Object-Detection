@@ -25,10 +25,6 @@ class MobileNetSSD:
         self.verbose = verbose # verbose to debug
     
     
-    def midpoint(ptA, ptB):
-	    return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
-    
-    
     # main function 
     def main(self):
 
@@ -82,7 +78,8 @@ class MobileNetSSD:
                     cv2.circle(image, (startX, 0), 5, (0, 0, 255), -1)
                     cv2.line(image, (startX, startY), (startX, 0), (0, 0, 255), 2)
                     dist_cal = dist.euclidean((startX, startY), (startX, 0))
-                    (mX, mY) = midpoint((startX, startY), (startX, 0))
+                    mX = (startX + startY) * 0.5
+		    mY = (startX + 0) * 0.5
                     x = mX - 15 if mX - 15 > 15 else mX + 15
                     cv2.putText(image, '%.2f' % round(dist_cal, 2), (x, mY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                     
