@@ -78,7 +78,7 @@ class MobileNetSSD:
                     cv2.circle(image, (endX, h), 5, (0, 0, 255), -1)
                     cv2.line(image, (endX, endY), (endX, h), (0, 0, 255), 2)
                     
-#                     dist_cal = float(dist.euclidean((endX, endY), (endX, h)) / 12)
+                    dist_cal = float(dist.euclidean((endX, endY), (endX, h)) / 12)
 #                     mX = (endX + endY) * 0.5
 #                     x = mX - 10 if mX - 10 > 10 else mX + 10
 #                     cv2.putText(image, "{:.2f} ft".format(dist_cal), (int(x), int((endX + h) * 0.5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
