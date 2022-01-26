@@ -75,9 +75,9 @@ class MobileNetSSD:
                     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)	
                     
                     
-                    cv2.circle(image, (startX, startY), 5, (0, 0, 255), -1)
-                    cv2.circle(image, (startX, 0), 5, (0, 0, 255), -1)
-                    cv2.line(image, (startX, startY), (startX, 0), (0, 0, 255), 2)
+#                     cv2.circle(image, (startX, startY), 5, (0, 0, 255), -1)
+#                     cv2.circle(image, (startX, 0), 5, (0, 0, 255), -1)
+#                     cv2.line(image, (startX, startY), (startX, 0), (0, 0, 255), 2)
                     
                     cv2.circle(image, (endX, endY), 5, (0, 0, 255), -1)
                     cv2.circle(image, (endX, 0), 5, (0, 0, 255), -1)
