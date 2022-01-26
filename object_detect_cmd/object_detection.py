@@ -23,7 +23,12 @@ class MobileNetSSD:
         self.confidence = args.confidence # confidence (threshold) value for prediction
         self.query = args.query # query string to return which class
         self.verbose = verbose # verbose to debug
-
+    
+    
+    def midpoint(ptA, ptB):
+	    return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
+    
+    
     # main function 
     def main(self):
 
