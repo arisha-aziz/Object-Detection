@@ -6,6 +6,7 @@ from google.colab.patches import cv2_imshow
 from PIL import Image
 import matplotlib.pyplot as plt
 import os
+from scipy.spatial import distance as dist
 
 # main class for object detection script
 class MobileNetSSD:
