@@ -80,8 +80,8 @@ class MobileNetSSD:
 #                     cv2.line(image, (startX, startY), (startX, 0), (0, 0, 255), 2)
                     
                     cv2.circle(image, (endX, endY), 5, (0, 0, 255), -1)
-                    cv2.circle(image, (0, endY), 5, (0, 0, 255), -1)
-                    cv2.line(image, (endX, endY), (0, endY), (0, 0, 255), 2)
+                    cv2.circle(image, (endX, h), 5, (0, 0, 255), -1)
+                    cv2.line(image, (endX, endY), (endX, h), (0, 0, 255), 2)
                     
 #                     dist_cal = dist.euclidean((startX, startY), (startX, 0))
 #                     mX = (startX + startY) * 0.5
