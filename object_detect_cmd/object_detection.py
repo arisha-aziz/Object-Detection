@@ -71,6 +71,14 @@ class MobileNetSSD:
                     # increment every time it is detected
                     detected += 1
                     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)
+                    
+                    cv2.circle(image, (startX, startY), 5, (0, 0, 255), -1)
+                    cv2.circle(image, (startX, 0), 5, (0, 0, 255), -1)
+                    cv2.line(image, (startX, startY), (startX, 0), (0, 0, 255), 2)
+                    D = dist.euclidean((startX, startY), (startX, 0))
+                    (mX, mY) = midpoint((startX, startY), (startX, 0))
+                    cv2.putText(image, "{:.2f}in".format(D), (mX - 15, mY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                    
                     cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
                     cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
