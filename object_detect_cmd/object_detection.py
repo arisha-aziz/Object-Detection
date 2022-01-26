@@ -78,10 +78,13 @@ class MobileNetSSD:
                     cv2.circle(image, (endX, h), 5, (0, 0, 255), -1)
                     cv2.line(image, (endX, endY), (endX, h), (0, 0, 255), 2)
                     
-                    dist_cal = dist.euclidean((endX, endY), (endX, h))
-                    mY = (endX + h) * 0.5
-                    y = mY - 15 if mY - 15 > 15 else mY + 15
-                    cv2.putText(image, "{:.2f}in".format(dist_cal), (int((endX + endY) * 0.5), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                    dist_cal = float(dist.euclidean((endX, endY), (endX, h)) / 12)
+                    mX = (endX + endY) * 0.5
+                    x = mX - 10 if mX - 10 > 10 else mX + 10
+                    cv2.putText(image, "{:.2f} ft".format(dist_cal), (int(x), int((endX + h) * 0.5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+#                     mY = (endX + h) * 0.5
+#                     y = mY - 15 if mY - 15 > 15 else mY + 15
+#                     cv2.putText(image, "{:.2f} ft".format(dist_cal), (int((endX + endY) * 0.5), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                     
                     cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
