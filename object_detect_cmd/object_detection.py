@@ -80,7 +80,7 @@ class MobileNetSSD:
                     dist_cal = dist.euclidean((startX, startY), (startX, 0))
                     mX = (startX + startY) * 0.5
                     x = mX - 15 if mX - 15 > 15 else mX + 15
-                    cv2.putText(image, '%.2f' % round(dist_cal, 2), (x, ((startX + 0) * 0.5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                    cv2.putText(image, "{:.2f}in".format(dist_cal), (int(x), int((startX + 0) * 0.5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                     
                     cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
