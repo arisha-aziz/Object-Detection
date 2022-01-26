@@ -72,7 +72,8 @@ class MobileNetSSD:
                     label = f"{CLASSES[idx]} : {'%.3f' % round(confidence, 3)}"
                     # increment every time it is detected
                     detected += 1
-                    cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)	
+                    cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 2)
+                    cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     
                     cv2.circle(image, (endX, endY), 5, (0, 0, 255), -1)
                     cv2.circle(image, (endX, h), 5, (0, 0, 255), -1)
@@ -91,7 +92,6 @@ class MobileNetSSD:
                     cv2.putText(image, "{:.2f} ft".format(dist_cal), (int(endX), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
                     cv2.putText(depth_estimated_image, "{:.2f} ft".format(dist_cal), (int(endX), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
                     
-                    cv2.rectangle(depth_estimated_image, (startX, startY), (endX, endY), (0, 255, 0), 2)
                     y = startY - 15 if startY - 15 > 15 else startY + 15
                     cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                     cv2.putText(depth_estimated_image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
