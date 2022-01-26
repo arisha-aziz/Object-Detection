@@ -77,6 +77,8 @@ class MobileNetSSD:
                     cv2.circle(image, (endX, endY), 5, (0, 0, 255), -1)
                     cv2.circle(image, (endX, h), 5, (0, 0, 255), -1)
                     cv2.line(image, (endX, endY), (endX, h), (0, 0, 255), 2)
+                    cv2.circle(depth_estimated_image, (endX, endY), 5, (0, 0, 0), -1)
+                    cv2.circle(depth_estimated_image, (endX, h), 5, (0, 0, 0), -1)
                     cv2.line(depth_estimated_image, (endX, endY), (endX, h), (0, 0, 0), 2)
                     
                     dist_cal = float(dist.euclidean((endX, endY), (endX, h)) / 12)
